@@ -1,0 +1,23 @@
+name: ejercicioo2 node + os
+
+on:
+  push:
+
+jobs:
+  install-node-on-systems:
+    strategy:
+      matrix:
+        node: [20, 22, 24]
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{matrix.os}}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Install dependencies
+        run: npm ci
