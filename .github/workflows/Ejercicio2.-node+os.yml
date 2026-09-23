@@ -11,7 +11,7 @@ jobs:
         os: [ubuntu-latest, windows-latest]
 
         exclude:
-          - node: 20,
+          - node: 20
             os: windows-latest
     runs-on: ${{matrix.os}}
     steps:
