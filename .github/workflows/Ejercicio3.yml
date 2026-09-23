@@ -12,6 +12,7 @@ jobs:
         include:
           - node: 24
             experimental: true
+    continue-on-error: ${{ matrix.experimental == true }}
 
     runs-on: ubuntu-latest
 
