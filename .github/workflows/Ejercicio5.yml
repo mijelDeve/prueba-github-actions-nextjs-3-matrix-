@@ -1,0 +1,20 @@
+name: max parallel
+
+on:
+  push:
+
+jobs:
+  install-dependencies:
+    strategy:
+      matrix:
+        node: [20, 21, 22, 23, 24]
+      max-parallel: 2
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
