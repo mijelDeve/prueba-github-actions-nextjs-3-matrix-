@@ -6,7 +6,7 @@ on:
 jobs:
   install-dependencies:
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix:
         node: [22, 20]
 
