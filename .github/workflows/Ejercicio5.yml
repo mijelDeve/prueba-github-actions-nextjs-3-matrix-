@@ -6,9 +6,9 @@ on:
 jobs:
   install-dependencies:
     strategy:
+      max-parallel: 2
       matrix:
         node: [20, 21, 22, 23, 24]
-      max-parallel: 2
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
