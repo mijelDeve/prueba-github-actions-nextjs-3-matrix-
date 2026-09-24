@@ -22,7 +22,7 @@ jobs:
 
       - name: falla intencionalmente si es node 22
         run: |
-          if ["${{ matrix.node }}" == "22"]; then
+          if [ "${{ matrix.node }}" == "22" ]; then
             echo "Fallo intencionalmente porque estamos usando node 22"
             exit 1
           fi
