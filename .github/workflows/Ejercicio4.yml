@@ -1,0 +1,28 @@
+name: ejercicio4 - fail fast
+
+on:
+  push:
+
+jobs:
+  install-dependencies:
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [20, 22]
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: falla intencionalmente si es node 22
+        run: |
+          if ["${{ matrix.node }}" == "22"]; then
+            echo "Fallo intencionalmente porque estamos usando node 22"
+            exit 1
+          fi
