@@ -1,0 +1,28 @@
+name: Ejercicio 9
+
+on:
+  push:
+
+jobs:
+  install-dependencies:
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        node: [20, 22, 24]
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: install npm
+        run: |
+          npm ci
+          npm test
+          npm run build
