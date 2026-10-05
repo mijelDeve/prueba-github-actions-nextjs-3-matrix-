@@ -5,20 +5,14 @@ on:
 
 
 jobs:
-    step1:
+    github-envs-into-steps:
         runs-on: ubuntu-latest
         steps:
             - name: Set env variable
               run: echo "APP_NAME=my-app" >> "$GITHUB_ENV"
 
-    step2:
-        runs-on: ubuntu-latest
-        steps:
-        - name: Print env variable
-          run: echo "Application - $APP_NAME"
+            - name: use variable
+              run: echo "Application $APP_NAME"
 
-    step3:
-        runs-on: ubuntu-latest
-        steps:
-          - name: Print env variable
-            run: echo "Running application $APP_NAME"
+            - name: use variable in another step
+              run: echo "Running application $APP_NAME"
