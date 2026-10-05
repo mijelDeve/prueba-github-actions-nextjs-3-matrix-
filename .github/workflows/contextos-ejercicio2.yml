@@ -1,0 +1,15 @@
+name: ejercicio2 - github output
+
+on:
+    push:
+
+jobs:
+    github-output:
+        runs-on: ubuntu-latest
+        steps:
+            - name: step1
+              id: version
+              run: echo "version=1.0.0" >> "$GITHUB_OUTPUT"
+
+            - name: step2
+              run: echo "Application version ${{ steps.version.outputs.version}}"
