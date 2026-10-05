@@ -1,0 +1,22 @@
+name: ejercicio2 - github output entre jobs
+
+on:
+    push:
+
+
+jobs:
+    github-output:
+        outputs:
+            version: ${{ steps.version.outputs.version }}
+        runs-on: ubuntu-latest
+        steps:
+            - name: step1 with output
+              id: version
+              run: echo "version=1.0.0" >> "$GITHUB_OUTPUT"
+
+    github-output-recibido:
+        needs: github-output
+        runs-on: ubuntu-latest
+        steps:
+            - name: recibiendo version del output anterior
+              run: echo "Building version ${{ needs.github-output.outputs.version }}"
