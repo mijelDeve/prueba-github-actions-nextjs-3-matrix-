@@ -7,11 +7,11 @@ on:
 jobs:
     github-output:
         outputs:
-            version: ${{ steps.version.outputs.version }}
+            version: ${{ steps.app_version.outputs.version }}
         runs-on: ubuntu-latest
         steps:
             - name: step1 with output
-              id: version
+              id: app_version
               run: echo "version=1.0.0" >> "$GITHUB_OUTPUT"
 
     github-output-recibido:
