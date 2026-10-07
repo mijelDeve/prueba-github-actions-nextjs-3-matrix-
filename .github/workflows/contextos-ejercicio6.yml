@@ -1,0 +1,44 @@
+name: ejercicio 5 - contextos - artifacts
+
+on:
+    push:
+
+jobs:
+    build:
+        outputs:
+          version: ${{ steps.generate.outputs.version }}
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: setup node
+              uses: actions/setup-node@v4
+
+            - name: Install
+              run: npm ci
+
+            - name: Build
+              run: npm run build
+
+            - name: Upload build
+              uses: actions/upload-artifact@v4
+              with:
+                name: build
+                path: dist/
+
+            - name: generate version
+              id: generate
+              run: echo "version=2.0.0" >> "$GITHUB_OUTPUT"
+    deploy:
+        needs: build
+        runs-on: ubuntu-latest
+        steps:
+          - name: download artifact
+            uses: actions/download-artifact@v4
+            with:
+              name: build
+              path: dist/
+
+          - name: log version
+            run: echo "${{ needs.build.outputs.version }}"
