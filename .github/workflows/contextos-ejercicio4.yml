@@ -1,0 +1,20 @@
+name: ejercicio 4 - contextos - artifacts
+
+on:
+    push:
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: setup node
+              uses: actions/setup-node@v4
+
+            - name: Install
+              run: npm ci
+
+            - name: Build
+              run: npm run build
