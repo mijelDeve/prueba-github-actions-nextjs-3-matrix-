@@ -6,3 +6,7 @@ on:
 jobs:
     ci:
         uses: ./.github/workflows/contextos-ejercicio7-reutilizable.yml
+        with:
+            node-version: '20'
+            enviroment: 'development'
+                
