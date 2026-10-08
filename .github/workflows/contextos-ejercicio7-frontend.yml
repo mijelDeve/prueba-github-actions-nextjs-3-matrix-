@@ -1,0 +1,8 @@
+name: Frontend CI contextos
+
+on:
+    push:
+
+jobs:
+    ci:
+        uses: ./.github/workflows/contextos-ejercicio7-reutilizable.yml
