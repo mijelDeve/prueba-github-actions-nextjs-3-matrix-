@@ -2,7 +2,13 @@ name: workflow reutilizable
 
 on:
   workflow_call:
-     
+    inputs:
+      node-version:
+        required: true
+        type: string
+      enviroment:
+        required: true
+        type: string
 
 jobs:
   install-dependencies:
