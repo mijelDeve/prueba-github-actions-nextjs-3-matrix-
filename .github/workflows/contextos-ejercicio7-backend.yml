@@ -1,4 +1,4 @@
-name: Frontend CI contextos
+name: Backend CI contextos
 
 on:
     push:
