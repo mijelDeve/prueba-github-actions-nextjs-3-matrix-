@@ -1,0 +1,25 @@
+name: Demo Yaml Anclajes
+
+on:
+    workflow_dispatch:
+
+jobs:
+    test-dev:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - &common-steps
+              name: Mostrar entorno
+              run: |
+                echo "Hola desde github"
+                echo "Este es un paso reutilizable"
+
+    test-prod:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - *common-steps
